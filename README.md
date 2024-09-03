@@ -17,9 +17,9 @@ a better understanding of the problems you encountered during the development of
 **Note:** Commits behind this fork could be automatically synced, meaning that changes made in the template are pushed into your repo. Please do not discard commits ahead (these are the updates you make to this repository).
 
 ## Project Team
-- *Mentor's Name*  - *Company Affliation* - Mentor
+- *Nibir Dhor*  - *DoD* - Mentor
 - *Technical Advisor Name* - *Company Affliation* - Technical Advisor
-- *Faculty Advisor's Name* - *Department* - Faculty Advisor
+- *Changqing Luo* - *CS* - Faculty Advisor
 - *Jeffrey Weaver* - *CS* - Student Team Member
 - *Paul Reid* - *CS* - Student Team Member
 - *Grace Gillam* - *CS* - Student Team Member
