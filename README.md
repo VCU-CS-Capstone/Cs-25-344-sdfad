@@ -1,10 +1,9 @@
-# *Your Project Description*
-## *Sponsoring Company or Organization*
+# *Sensor Data Fusion and Algorithm Development*
+## *U.S. Department of Defense*
 ## *Short Project Description*
-The directory structure in this GitHub is to allow the project to have all its resources self-contained.
-Open Source software should not just be a repository of code.  There are a number of directories to help you and others who will 
-follow in your footsteps.  It'll also allow the Linux Foundation OMP Mentorship program to keep track of your project and get
-a better understanding of the problems you encountered during the development of this project. 
+Seeking algorithms that enable the detection of a broad range of threat targets. Detection performance is often reliant on the ability to discriminate targets amongst varying levels of clutter, obscurants, or decoys. In many cases, a single sensing modality is inadequate for high-confidence detection. The U.S. Army is interested in identifying approaches to fusing data from multiple types of sensors and disparate platforms, for example, a wide field-of-view electro-optic imager with a synthetic aperture radar. The primary targets of interest for this effort include surface and buried landmines, located in natural and urban environments.
+
+Further details and descriptions will be provided when we are able to meet with our sponsor from the DoD. 
 
 | Folder | Description |
 |---|---|
