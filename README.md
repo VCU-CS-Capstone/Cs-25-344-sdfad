@@ -16,7 +16,7 @@ Further details and descriptions will be provided when we are able to meet with 
 **Note:** Commits behind this fork could be automatically synced, meaning that changes made in the template are pushed into your repo. Please do not discard commits ahead (these are the updates you make to this repository).
 
 ## Project Team
-- *Nibir Dhor*  - *DoD* - Mentor
+- *Nibir Dhar*  - *DoD* - Mentor
 - *Technical Advisor Name* - *Company Affliation* - Technical Advisor
 - *Changqing Luo* - *CS* - Faculty Advisor
 - *Jeffrey Weaver* - *CS* - Student Team Member
