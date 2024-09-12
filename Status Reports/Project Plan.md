@@ -3,7 +3,7 @@
 
 **Students' Names: Grace Gillam, Jeffrey Weaver, Paul Reid, David Anthony**
 
-**Mentor: Nibir Dhor**
+**Mentor: Nibir Dhar**
 
 **Faculty Advisor: Changqing Luo**
 
