@@ -1,11 +1,11 @@
-# *CSnnn Project Name*
-## **Sponsor:**
+# *25-093 Sensor Data Fusion and Algorithm Development*
+## **Sponsor: Unknown**
 
-**Students' Names:**
+**Students' Names: Grace Gillam, Jeffrey Weaver, Paul Reid, David Anthony**
 
-**Mentor:**
+**Mentor: Nibir Dhor**
 
-**Faculty Advisor:**
+**Faculty Advisor: Changqing Luo**
 
 **Project:**
 
