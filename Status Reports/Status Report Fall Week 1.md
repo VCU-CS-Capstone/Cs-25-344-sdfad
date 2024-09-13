@@ -7,11 +7,10 @@
 **Faculty Advisor: Changqing Luo**
 
 ## 1) Accomplishments this week ##
-   - Paul met with Nibir (for reasons unrelated to capstone) and was able to ask about the project in person. Was told to sit tight and that he would reach out when the DoD sponsor was ready to be involved. 
-
+   - We met as a team and assigned roles as well as worked towards completing team contract. We also established a meeting time and set up a time to meet with our Faculty Adivsor
 ## 2) Milestones to be completed next week ##
-   - Research sensor types and how the code behind them functions
-   - Research algorithms commonly seen in the field
+   - Research sensor types and what to do with them
+   - Meet with faculty advisor and set up weekly meeting times
 
 ## 3) Issues, problems or concerns ##
    - We don't have any real contact with our sponsor yet
