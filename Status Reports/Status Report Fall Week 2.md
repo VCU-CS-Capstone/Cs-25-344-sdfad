@@ -7,10 +7,13 @@
 **Faculty Advisor: Changqing Luo**
 
 ## 1) Accomplishments this week ##
-   - Paul met with Nibir (for reasons unrelated to capstone) and was able to ask about the project in person. Was told to sit tight and that he would reach out when the DoD sponsor was ready to be involved. 
+   - Met with faculty adivsor and created and cleaned up the github repo
+   - Emailed Nibir to try and set up a time to meet 
 
 ## 2) Milestones to be completed next week ##
-   - Research sensor types and how the code behind them functions
+   - Research more about the topic
+   - Wait for army mentor to get assigned so we can do work
+   - Hopefully connect with Nibir
    - Research algorithms commonly seen in the field
 
 ## 3) Issues, problems or concerns ##
