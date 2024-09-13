@@ -1,4 +1,4 @@
-# *Sensor Data Fusion and Algorithm Development*
+# *CS-25-344 Sensor Data Fusion and Algorithm Development*
 ## *U.S. Department of Defense*
 ## *Short Project Description*
 Seeking algorithms that enable the detection of a broad range of threat targets. Detection performance is often reliant on the ability to discriminate targets amongst varying levels of clutter, obscurants, or decoys. In many cases, a single sensing modality is inadequate for high-confidence detection. The U.S. Army is interested in identifying approaches to fusing data from multiple types of sensors and disparate platforms, for example, a wide field-of-view electro-optic imager with a synthetic aperture radar. The primary targets of interest for this effort include surface and buried landmines, located in natural and urban environments.
