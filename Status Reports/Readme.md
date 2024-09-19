@@ -14,7 +14,7 @@ Status Report Fall Week XX.md is a template for to copy-paste into new Status re
 | Week 1 Status Report | We have met as a team for the first time and started the team contract  | Made progress on Team Contract and set meeting with advisor | No problems to report! |
 | Week 2 Status Report | Work on our team contract and submit it. Trying to set up sponser meeting | Finished the team contract and submitted it. Sent the sponser an email and wait for response  | Sponser has not gotten back so we keep waiting! |
 | Week 3 Status Report |Complete github repo setup and publish it to canvas |Sucessfully contacted and met with our mentor |Mentor essentially stated that we must wait for our advisor to reach out to the army mentor so that we may proceed|
-| Week 4 Status Report | Meet with advisor to understand next steps | Found next steps we will be taking and began our research into our topic | THe guideance is very foggy but we will push through! |
+| Week 4 Status Report | Meet with advisor to understand next steps | Found next steps we will be taking and began our research into our topic | The guideance is very foggy but we will push through! |
 | Week 5 Status Report | | | |
 | Week 6 Status Report | | | |
 | Week 7 Status Report | | | |
