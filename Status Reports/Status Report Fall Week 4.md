@@ -16,5 +16,5 @@
 
 ## 3) Issues, problems or concerns ##
    - We don't have any real contact with our sponsor yet
-   - We are slightly confused about how the actual project is working but our advisor told us to being now!
+   - We are slightly confused about how the actual project is working but our advisor told us to begin now!
    
