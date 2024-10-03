@@ -8,14 +8,14 @@
 
 ## 1) Accomplishments this week ##
    - Met with advisor and got guideance on how to move forawrd
-   - Gleamed resources that we can use to being research into our project
-   - Looked for papers to try and determine what sensors we want to use
+   - Used VCU database to find papers
+   - Found math and papers that we will use to make our algo
 
 ## 2) Milestones to be completed next week ##
    - Look at papers within VCU database to find more resources
-   - Research algorithms commonly seen in the field
+   - Found specific senors we can use and the algos associated with them
 
 ## 3) Issues, problems or concerns ##
    - We have not had contact with the army mentor.
-   - Not too sure what kind of dectection we are using.
+   - It is very much free hand go at it mentalility!
    
