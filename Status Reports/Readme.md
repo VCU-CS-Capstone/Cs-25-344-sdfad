@@ -17,7 +17,7 @@ Status Report Fall Week XX.md is a template for to copy-paste into new Status re
 | Week 4 Status Report | Meet with advisor to understand next steps | Found next steps we will be taking and began our research into our topic | The guideance is very foggy but we will push through! |
 | Week 5 Status Report |Meet with advisor and provide research on sensor data fusion. |Met with advisor, provided some research we have found and are in the process of adding it to the github after polishing it|Still have not been in contact with army advisor, however Luo said next week we may be able to contact |
 | Week 6 Status Report |We must work on our project proposal and get our advisors approval, |We've done some more research on sensor data fusion |Still have no contact with miltary sponser, and with the project proposal, we don't have a great scope/understanding on what we should be using/what it should look like|
-| Week 7 Status Report | | | |
+| Week 7 Status Report |Talk with sponser about proposal/scopes and find out what we will be using |We've finished a rough version of our proposal, but we need a 1 week extension to finally meet and talk with our advisor |We have finally got contact/ know who our military sponser is, but have yet to get a response from him to discuss the scope of the project. |
 | Week 8 Status Report | | | |
 | Week 9 Status Report | | | |
 | Week 10 Status Report | | | |
