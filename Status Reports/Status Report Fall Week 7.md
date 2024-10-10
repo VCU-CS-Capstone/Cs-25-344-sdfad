@@ -8,14 +8,15 @@
 
 ## 1) Accomplishments this week ##
    - Met with advisor and got guideance on how to move forawrd
-   - Used VCU database to find papers
-   - Found math and papers that we will use to make our algo
+   - Found out our sponser but no contact yet
+   - Worked on capstone proposal
 
 ## 2) Milestones to be completed next week ##
-   - Look at papers within VCU database to find more resources
-   - Found specific senors we can use and the algos associated with them
+   - Work on capstone proposal
+   - Hopefully make contact with the sponser
 
 ## 3) Issues, problems or concerns ##
    - We have not had contact with the army mentor.
    - It is very much free hand go at it mentalility!
+   - This proposal is a lot of words
    
