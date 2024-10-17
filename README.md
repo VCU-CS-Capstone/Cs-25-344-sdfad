@@ -17,7 +17,7 @@ Further details and descriptions will be provided when we are able to meet with 
 
 ## Project Team
 - *Nibir Dhar*  - *DoD* - Mentor
-- *James Perea* - *Company Affliation* - Technical Advisor
+- *James Perea* - *DoD ASPIRE* - Technical Advisor
 - *Changqing Luo* - *CS* - Faculty Advisor
 - *Jeffrey Weaver* - *CS* - Student Team Member
 - *Paul Reid* - *CS* - Student Team Member
