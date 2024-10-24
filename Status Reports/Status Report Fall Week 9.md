@@ -8,16 +8,17 @@
 
 ## 1) Accomplishments this week ##
    - Met with advisor and got guideance on how to move forawrd
-   - Brought a kind of finalized proposal to turn in
-   - Discovered what sensors to use for datasets
+   - Found a CNN model to use to clean our data
+   - Found some datasets that we could use
 
 ## 2) Milestones to be completed next week ##
-   - Look at papers within VCU database to find more resources
-   - Try to understand how the CNN works and get it to get specficis from database
-   - Discover datasets we want to use
+   - Try and use a CNN to clean our data
+   - Make an algorithm to combine our data
+   - Find the exact dataset we should use
 
 ## 3) Issues, problems or concerns ##
    - We have not had contact with the army mentor.
    - None of us have used neural networks
    - These datasets are hard to come by
+   - The direction is very cloudy 
    
