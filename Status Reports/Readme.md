@@ -19,7 +19,7 @@ Status Report Fall Week XX.md is a template for to copy-paste into new Status re
 | Week 6 Status Report |We must work on our project proposal and get our advisors approval, |We've done some more research on sensor data fusion |Still have no contact with miltary sponser, and with the project proposal, we don't have a great scope/understanding on what we should be using/what it should look like|
 | Week 7 Status Report |Talk with sponser about proposal/scopes and find out what we will be using |We've finished a rough version of our proposal, but we need a 1 week extension to finally meet and talk with our advisor |We have finally got contact/ know who our military sponser is, but have yet to get a response from him to discuss the scope of the project. |
 | Week 8 Status Report | Talk with advisor on what tools we can use to get our data cleaned and ready for use |We have a basic proposal written and we got some datasets as to what we want to use |No response from military sponser, datasets that are annotated are hard to come by |
-| Week 9 Status Report | | | |
+| Week 9 Status Report |Find an algorithm to fuse the data after it has been cleaned |We have done some research about CNN networks, and found an algorithm using pytorch that cleans data based on what we want |No issues at the moment |
 | Week 10 Status Report | | | |
 | Week 11 Status Report | | | |
 | Week 12 Status Report | | | |
