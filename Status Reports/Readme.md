@@ -21,9 +21,9 @@ Status Report Fall Week XX.md is a template for to copy-paste into new Status re
 | Week 8 Status Report | Talk with advisor on what tools we can use to get our data cleaned and ready for use |We have a basic proposal written and we got some datasets as to what we want to use |No response from military sponser, datasets that are annotated are hard to come by |
 | Week 9 Status Report |Find an algorithm to fuse the data after it has been cleaned |We have done some research about CNN networks, and found an algorithm using pytorch that cleans data based on what we want |No issues at the moment |
 | Week 10 Status Report |We need to start experimenting using pytorch and our dataset after we use our CNN to sort/clean the data |We have our dataset, and we have our blueprint for our CNN and we are learning how to utilize it | no issues at the moment|
-| Week 11 Status Report | | | |
-| Week 12 Status Report | | | |
-| Week 13 Status Report | | | |
+| Week 11 Status Report |We need to be able to create a CNN architecture to be able to parse our data |We need to split up our data to get faster results |no issues at the moment |
+| Week 12 Status Report |Must be able to get server space to run our CNN | We have a working data pipeline for our CNN |no issues at the moment |
+| Week 13 Status Report |Retreiving an account to get server space |Got a somewhat working skeleton of the code for out CNN |no issues at the moment |
 | Week 14 Status Report | | | |
 | Week 15 Status Report | | | |
 | Week 16 Status Report | | | |
