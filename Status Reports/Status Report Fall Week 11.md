@@ -1,4 +1,4 @@
-# *CS 25-093 Sensor Data Fusion and Algorithm Development*
+# *CS 25-344  Sensor Data Fusion and Algorithm Development*
 
 **Students' Names: Grace Gillam, Paul Reid, Jeffrey Weaver, David Anthony**
 
