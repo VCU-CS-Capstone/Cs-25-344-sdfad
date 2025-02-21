@@ -7,7 +7,7 @@
 **Faculty Advisor: Changqing Luo**
 
 ## 1) Accomplishments this week ##
-   - Not much we just got back to school
+   - Getting ready to save weights
    - We have access to HPC
 
 ## 2) Milestones to be completed next week ##
