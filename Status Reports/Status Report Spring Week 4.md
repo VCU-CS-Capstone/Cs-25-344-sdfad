@@ -7,13 +7,13 @@
 **Faculty Advisor: Changqing Luo**
 
 ## 1) Accomplishments this week ##
-   - Not much we just got back to school
+   - We have trained on a scene
    - We have access to HPC
 
 ## 2) Milestones to be completed next week ##
    - We want our model to actually be working
    - Upload the dataset to the HPC
-   - Use our dataset to get results
+   - Use wget to get files on tesla
 
 ## 3) Issues, problems or concerns ##
    - We have not had contact with the army mentor.
