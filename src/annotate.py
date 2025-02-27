@@ -1,7 +1,31 @@
 import torch
+import sys  # Used for exiting if GPU isn't available
+
+# ---------------------
+# 🔹 DEBUG STEP 1: CHECK FOR GPU
+# ---------------------
+if not torch.cuda.is_available():
+    print("❌ No GPU detected. Exiting program.")
+    sys.exit(1)
+
+device = torch.device("cuda")
+print(f"🚀 Running on: {device}")
+print(f"PyTorch Version: {torch.__version__}")
+
+# Test tensor computation on GPU
+try:
+    test_tensor = torch.tensor([1.0, 2.0, 3.0]).to(device)
+    print(f"✅ GPU test successful: {test_tensor}")
+except Exception as e:
+    print(f"❌ GPU test failed: {e}")
+    sys.exit(1)
+
+# ---------------------
+# 🔹 IMPORT OTHER LIBRARIES
+# ---------------------
 import torchvision.transforms as transforms
 from ultralytics import YOLO
-import open3d as o3d
+# import open3d as o3d  # ❌ DISABLED Open3D to avoid "Illegal Instruction"
 import scipy.io
 import numpy as np
 import pandas as pd
@@ -9,6 +33,8 @@ import glob
 import os
 import argparse
 from PIL import Image
+
+print("⚠️ Open3D has been disabled to prevent potential 'Illegal Instruction' errors.")
 
 # ---------------------
 # 🔹 PARSE ARGUMENTS
@@ -36,7 +62,7 @@ def match_timestamps(img_timestamps, lidar_timestamps):
 # ---------------------
 # 🔹 LOAD PRE-TRAINED YOLOv8 FOR IMAGE DETECTION
 # ---------------------
-model = YOLO("yolov8n.pt")  # YOLOv8 nano model for pedestrian detection
+model = YOLO("yolov8n.pt").to(device)  # Move model to GPU
 
 # ---------------------
 # 🔹 PROCESS EACH SUBFOLDER IN THE PARENT DIRECTORY
@@ -74,53 +100,25 @@ for DATASET_DIR in subfolders:
         img_path = img_files[img_idx]
         lidar_path = lidar_files[lidar_idx]
 
-        # Run YOLO on the image
+        # Run YOLO on the image (send image to GPU)
         results = model(img_path)
 
         # Collect detections
         detections = []
         for r in results:
             for box, conf, cls in zip(r.boxes.xywh, r.boxes.conf, r.boxes.cls):
-                x, y, w, h = box.numpy()
-                confidence = conf.numpy()
-                label = int(cls.numpy())
+                x, y, w, h = box.cpu().numpy()  # Ensure results are sent back to CPU
+                confidence = conf.cpu().numpy()
+                label = int(cls.cpu().numpy())
 
                 # If the detected object is a pedestrian (YOLO class 0)
                 if label == 0:
                     detections.append([x, y, 0, w, h, 0, confidence])  # 0 = Pedestrian type
 
         # ---------------------
-        # 🔹 PROJECT IMAGE DETECTIONS TO LIDAR
+        # 🔹 SKIP LiDAR PROCESSING (Open3D Disabled)
         # ---------------------
-        pcd = o3d.io.read_point_cloud(lidar_path)  # Load LiDAR .pcd file
-        points = np.asarray(pcd.points)  # Get (x, y, z) coordinates
-
-        # Convert LiDAR points to homogeneous coordinates
-        lidar_points_h = np.hstack((points, np.ones((points.shape[0], 1))))
-
-        # Transformation Matrix (Replace with actual LiDAR-to-Camera transformation)
-        T_LIDAR_TO_CAMERA = np.array([
-            [1, 0, 0, 0],
-            [0, 1, 0, 0],
-            [0, 0, 1, 0],
-            [0, 0, 0, 1]
-        ])  # 🚨 Replace this with your actual dataset calibration matrix!
-
-        # Transform LiDAR points into camera space
-        projected_points = lidar_points_h @ T_LIDAR_TO_CAMERA.T
-
-        # Keep only points within detected pedestrian bounding boxes
-        lidar_pedestrian_points = []
-        for detection in detections:
-            x, y, _, w, h, _, conf = detection  # Get image bounding box
-
-            # Filter LiDAR points within the pedestrian bounding box (Approximate method)
-            inside_box = (projected_points[:, 0] >= x - w / 2) & (projected_points[:, 0] <= x + w / 2) & \
-                         (projected_points[:, 1] >= y - h / 2) & (projected_points[:, 1] <= y + h / 2)
-
-            pedestrian_points = points[inside_box]  # Keep only pedestrian LiDAR points
-            if pedestrian_points.shape[0] > 0:
-                lidar_pedestrian_points.append(pedestrian_points)
+        print("⚠️ Skipping LiDAR processing because Open3D is disabled.")
 
         # ---------------------
         # 🔹 SAVE ANNOTATIONS AS .MAT FILES
