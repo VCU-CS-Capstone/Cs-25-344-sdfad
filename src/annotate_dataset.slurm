@@ -2,32 +2,19 @@
 #SBATCH --job-name=annotate_dataset
 #SBATCH --output=annotate_output.log
 #SBATCH --error=annotate_error.log
-#SBATCH --time=2:00:00
-#SBATCH --mem=8G
-#SBATCH --partition=gpu      # Ensure it runs on a GPU node
-#SBATCH --gres=gpu:1         # Request 1 GPU
-#SBATCH --export=ALL
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --mem=16G
+#SBATCH --time=1:00:00
 
-echo "🚀 Starting annotation at $(date) on $(hostname)"
-echo "🔍 Checking SLURM-assigned GPU resources..."
-scontrol show job $SLURM_JOB_ID | grep Gres
+# Load CUDA (ensure correct version, adjust if needed)
+module load cuda/12.1  # This matches your installed PyTorch CUDA version
 
-echo "🔍 Checking available GPUs on this node..."
-nvidia-smi
+# Activate Conda environment
+source ~/miniconda3/bin/activate pytorch310  # Ensure this matches your working env
 
-echo "🔍 Python version being used..."
-which python
-python --version
+# Check PyTorch inside the job (debugging)
+python -c "import torch; print('✅ PyTorch Loaded:', torch.__version__)"
 
-echo "🔍 Testing YOLO before running annotation..."
-python -c "from ultralytics import YOLO; model = YOLO('yolov8n.pt'); print('✅ YOLO loaded successfully!')"
-
-echo "🔍 Checking if PyTorch detects the GPU..."
-python -c "import torch; print(f'CUDA Available: {torch.cuda.is_available()}'); print(f'Device Count: {torch.cuda.device_count()}'); print(f'Using Device: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else None}')"
-python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
-
-
-echo "🔍 Running the annotation script..."
+# Run the Python script
 python ~/annotate.py ~/dataset
-
-echo "✅ job completed at $(date)"
