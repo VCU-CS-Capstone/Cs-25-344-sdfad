@@ -1,0 +1,27 @@
+#!/bin/bash
+#SBATCH --job-name=check_columns
+#SBATCH --output=/home/cs-25-344/Cs-25-344-sdfad/src/outputs/%x_%j.out
+#SBATCH --error=/home/cs-25-344/Cs-25-344-sdfad/src/outputs/%x_%j.err
+#SBATCH --time=00:10:00
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=16G
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:0
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=anthonyde@vcu.edu
+
+cd $SLURM_SUBMIT_DIR
+
+# === CONFIGURATION ===
+MINICONDA_DIR="/home/cs-25-344/miniconda3"
+ENV_PATH="/home/cs-25-344/conda-envs/waymo-env"
+
+# Load conda into this shell
+source "$MINICONDA_DIR/etc/profile.d/conda.sh"
+conda activate "$ENV_PATH"
+
+# === RUN COLUMN CHECK ===
+echo "Running column inspection for test ID..."
+python /home/cs-25-344/Cs-25-344-sdfad/src/scripts/check_all_parquet_columns.py
+
+echo "✅ Column check complete at $(date)"
