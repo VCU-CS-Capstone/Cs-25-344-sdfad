@@ -56,6 +56,8 @@ conda install --yes -c nvidia -c pytorch -c conda-forge \
 # === 4. INSTALL PIP PACKAGES ===
 echo "Installing pip packages..."
 pip install --no-cache-dir --no-deps waymo-open-dataset-tf-2-11-0 protobuf==3.20.*
+pip install efficientnet_pytorch
+pip install --force-reinstall --no-cache-dir pyarrow
 
 # === 5. FIX PERMISSIONS AGAIN ===
 chgrp -R 'egr cs-25-344' "$ENV_PATH"

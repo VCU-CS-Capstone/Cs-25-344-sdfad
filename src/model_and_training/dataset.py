@@ -8,10 +8,11 @@ from torchvision import transforms
 from PIL import Image
 import pyarrow.parquet as pq
 from waymo_open_dataset import dataset_pb2 as open_dataset
+from waymo_open_dataset import label_pb2
 
 
 class WaymoFusionDataset(Dataset):
-    def __init__(self, root_dir, transform=None, max_lidar_points=100000):
+    def __init__(self, root_dir, transform=None, max_lidar_points=100000, limit=None):
         self.root_dir = root_dir
         self.transform = transform or transforms.Compose([
             transforms.Resize((224, 224)),
@@ -23,6 +24,8 @@ class WaymoFusionDataset(Dataset):
 
         # Collect all synchronized filenames (excluding extension)
         self.filenames = self._get_synchronized_filenames()
+        if limit:
+            self.filenames = self.filenames[:limit]
 
     def _get_synchronized_filenames(self):
         cam_files = set(f[:-8] for f in os.listdir(os.path.join(self.root_dir, 'camera_image')) if f.endswith('.parquet'))
@@ -74,7 +77,7 @@ class WaymoFusionDataset(Dataset):
         box_path = os.path.join(self.root_dir, 'camera_box', base_name + '.parquet')
         table = pq.read_table(box_path).to_pandas()
 
-        ped_boxes = table[table['[CameraBoxComponent].type'] == 'TYPE_PEDESTRIAN']
+        ped_boxes = table[table['[CameraBoxComponent].type'] == label_pb2.Label.Type.TYPE_PEDESTRIAN]
         boxes = []
         for _, row in ped_boxes.iterrows():
             x = row['[CameraBoxComponent].box.center.x']
