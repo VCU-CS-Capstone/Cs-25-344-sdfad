@@ -10,6 +10,13 @@ import pyarrow.parquet as pq
 from waymo_open_dataset import dataset_pb2 as open_dataset
 from waymo_open_dataset import label_pb2
 
+try:
+    CAMERA_FRONT = label_pb2.CameraName.Value("FRONT")
+    TYPE_PEDESTRIAN = label_pb2.Label.Type.Value("TYPE_PEDESTRIAN")
+except Exception:
+    CAMERA_FRONT = 1
+    TYPE_PEDESTRIAN = 2
+
 
 class WaymoFusionDataset(Dataset):
     def __init__(self, root_dir, transform=None, max_lidar_points=100000, limit=None):
@@ -22,7 +29,6 @@ class WaymoFusionDataset(Dataset):
         ])
         self.max_lidar_points = max_lidar_points
 
-        # Collect all synchronized filenames (excluding extension)
         self.filenames = self._get_synchronized_filenames()
         if limit:
             self.filenames = self.filenames[:limit]
@@ -39,32 +45,31 @@ class WaymoFusionDataset(Dataset):
     def __getitem__(self, idx):
         base_name = self.filenames[idx]
 
-        rgb = self._load_rgb_image(base_name)
+        rgb, orig_size = self._load_rgb_image(base_name)
         lidar = self._load_lidar_points(base_name)
-        targets = self._load_pedestrian_labels(base_name)
+        targets = self._load_pedestrian_labels(base_name, orig_size)
 
         return rgb, lidar, targets
 
     def _load_rgb_image(self, base_name):
         cam_path = os.path.join(self.root_dir, 'camera_image', base_name + '.parquet')
         table = pq.read_table(cam_path).to_pandas()
-        image_bytes = table['[CameraImageComponent].image'].iloc[0]
+        front_row = table[table['key.camera_name'] == CAMERA_FRONT].iloc[0]
+        image_bytes = front_row['[CameraImageComponent].image']
         img = Image.open(io.BytesIO(image_bytes)).convert("RGB")
-        return self.transform(img)
+        orig_size = img.size
+        return self.transform(img), orig_size
 
     def _load_lidar_points(self, base_name):
         lidar_path = os.path.join(self.root_dir, 'lidar', base_name + '.parquet')
         table = pq.read_table(lidar_path).to_pandas()
 
-        # Directly fetch the raw LiDAR data (now stored as a NumPy array)
         raw_data = table['[LiDARComponent].range_image_return1.values'].iloc[0]
-        points = np.array(raw_data).reshape(-1, 4)  # Reshaped to (N, 4) format (x, y, z, intensity)
+        points = np.array(raw_data).reshape(-1, 4)
 
-        # Handle cases where there are more than 4 columns (just drop extras)
         if points.shape[1] > 4:
             points = points[:, :4]
 
-        # Padding if there are fewer than max_lidar_points
         if points.shape[0] > self.max_lidar_points:
             points = points[:self.max_lidar_points]
         else:
@@ -73,18 +78,20 @@ class WaymoFusionDataset(Dataset):
 
         return torch.tensor(points, dtype=torch.float32)
 
-    def _load_pedestrian_labels(self, base_name):
+    def _load_pedestrian_labels(self, base_name, orig_size):
         box_path = os.path.join(self.root_dir, 'camera_box', base_name + '.parquet')
         table = pq.read_table(box_path).to_pandas()
+        ped_boxes = table[table['[CameraBoxComponent].type'] == TYPE_PEDESTRIAN]
 
-        ped_boxes = table[table['[CameraBoxComponent].type'] == label_pb2.Label.Type.TYPE_PEDESTRIAN]
+        orig_width, orig_height = orig_size
         boxes = []
         for _, row in ped_boxes.iterrows():
-            x = row['[CameraBoxComponent].box.center.x']
-            y = row['[CameraBoxComponent].box.center.y']
-            w = row['[CameraBoxComponent].box.size.x']
-            h = row['[CameraBoxComponent].box.size.y']
-            boxes.append([x, y, w, h])
+            x = row['[CameraBoxComponent].box.center.x'] / 1920 * orig_width
+            y = row['[CameraBoxComponent].box.center.y'] / 1280 * orig_height
+            w = row['[CameraBoxComponent].box.size.x'] / 1920 * orig_width
+            h = row['[CameraBoxComponent].box.size.y'] / 1280 * orig_height
+            if 0 < w < 300 and 0 < h < 300:
+                boxes.append([x, y, w, h])
 
         target = {
             'boxes': torch.tensor(boxes, dtype=torch.float32),

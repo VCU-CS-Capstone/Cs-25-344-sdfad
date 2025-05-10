@@ -42,7 +42,7 @@ class FusionModel(nn.Module):
             nn.Dropout(0.3),
             nn.Linear(256, 128),
             nn.ReLU(),
-            nn.Linear(128, 4)  # Outputs: bounding box [x, y, w, h]
+            nn.Linear(128, 5)  # Outputs: [x, y, w, h, confidence]
         )
 
     def forward(self, rgb_img, lidar_points):
@@ -57,7 +57,10 @@ class FusionModel(nn.Module):
             lidar_feat = self.lidar_encoder(lidar_points)
 
         combined = torch.cat([rgb_feat, lidar_feat], dim=1)
-        return self.fusion_head(combined)
+        output = self.fusion_head(combined)
+        box_coords = output[:, :4]
+        confidence = torch.sigmoid(output[:, 4])
+        return box_coords, confidence
 
 
 if __name__ == "__main__":
@@ -70,7 +73,8 @@ if __name__ == "__main__":
     dummy_lidar = dummy_lidar.to(device)
 
     with torch.no_grad():
-        output = model(dummy_rgb, dummy_lidar)
+        boxes, conf = model(dummy_rgb, dummy_lidar)
 
     print("✅ Forward pass successful!")
-    print(f"Output shape: {output.shape}")
+    print(f"Box output shape: {boxes.shape}")
+    print(f"Confidence shape: {conf.shape}")
